@@ -23,7 +23,7 @@ Développé par **@Kg4reall** – powered by Python 💻
 
 ---
 
-## 🛠️ Installation rapide
+ 🛠️ Installation rapide
 
 ### 1. Cloner le projet
 ```bash
@@ -78,7 +78,7 @@ telegram_bot/
 ├── README.md               # Ce fichier
 └── requirements.txt        # Liste des dépendances
 
-##💡Améliorations possibles
+💡 Améliorations possibles
 🎯 Ajouter un système de classement (/top)
 
 🎮 Quiz avec boutons (inline keyboard)
@@ -87,15 +87,15 @@ telegram_bot/
 
 🛡️ Protection admin avancée
 
-##👤Auteur
+👤 Auteur
 Hālįl Kg
 t.me/Kg4reall
 Passionné de cybersécurité et IA 🤖⚔️
 
-##🏁Licence
+🏁 Licence
 Code open-source – libre d’utilisation à but éducatif.
 
-##⭐Donne de la force
+⭐ Donne de la force
 Si tu aimes le projet, pense à mettre une étoile sur GitHub 🌟
 
 
