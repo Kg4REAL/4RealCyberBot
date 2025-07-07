@@ -1,0 +1,9 @@
+--- roadmap.txt ---
+1. 🐧 Apprendre les bases de Linux (commandes, shell, scripts)
+2. 🌐 Comprendre les réseaux : modèles OSI/TCP-IP, ports, protocoles
+3. 🐍 Maîtriser Python pour l'automatisation
+4. 🔐 Connaître les vulnérabilités Web : XSS, SQLi, CSRF
+5. 🛠️ Pratiquer le pentest : reconnaissance, scan, exploitation
+6. 🧠 Apprendre les bases de la forensic et du SOC
+7. 🔍 OSINT : recherches et investigations en sources ouvertes
+8. 📝 Rédiger des rapports d’audit professionnels

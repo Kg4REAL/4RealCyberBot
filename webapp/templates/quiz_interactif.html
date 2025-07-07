@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz interactif 4RealCyberBot</title>
+<style>
+  /* Reset basique */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212;
+    color: #eee;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 10px;
+  }
+  #quiz-container {
+    background: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+    max-width: 480px;
+    width: 100%;
+    padding: 30px 25px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #00e676;
+    text-shadow: 0 0 10px #00e676aa;
+  }
+  #question {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    min-height: 70px;
+  }
+  #choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  button.choice {
+    background: #272727;
+    color: #eee;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.6);
+  }
+  button.choice:hover:not(:disabled) {
+    background-color: #00e676;
+    color: #121212;
+    box-shadow: 0 4px 14px #00e676cc;
+  }
+  button.choice:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+  #next-btn {
+    margin-top: 25px;
+    background-color: #00bfa5;
+    color: #121212;
+    font-weight: 700;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  #next-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+  #result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    min-height: 40px;
+  }
+</style>
+</head>
+<body>
+
+<div id="quiz-container">
+  <h1>🧠 Quiz interactif 4RealCyberBot</h1>
+
+  <div id="question"></div>
+  <div id="choices"></div>
+  <button id="next-btn" disabled>Question suivante</button>
+  <div id="result"></div>
+</div>
+
+<script>
+let questions = [];
+let currentIndex = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const choicesEl = document.getElementById("choices");
+const resultEl = document.getElementById("result");
+const nextBtn = document.getElementById("next-btn");
+
+function loadQuestion() {
+  resultEl.textContent = "";
+  nextBtn.disabled = true;
+  const q = questions[currentIndex];
+  questionEl.textContent = `Q${currentIndex + 1} : ${q.question}`;
+  choicesEl.innerHTML = "";
+  q.choices.forEach((choice) => {
+    const btn = document.createElement("button");
+    btn.textContent = choice;
+    btn.classList.add("choice");
+    btn.onclick = () => checkAnswer(choice, btn);
+    choicesEl.appendChild(btn);
+  });
+}
+
+function checkAnswer(selected, btn) {
+  const q = questions[currentIndex];
+  if (selected === q.answer) {
+    resultEl.textContent = "✅ Bonne réponse !";
+    score++;
+    btn.style.backgroundColor = "#00e676";
+    btn.style.color = "#121212";
+  } else {
+    resultEl.textContent = `❌ Mauvaise réponse. La bonne réponse était : ${q.answer}`;
+    btn.style.backgroundColor = "#d32f2f";
+    btn.style.color = "#fff";
+
+    // Colorer le bon bouton en vert
+    Array.from(choicesEl.children).forEach(b => {
+      if (b.textContent === q.answer) {
+        b.style.backgroundColor = "#00e676";
+        b.style.color = "#121212";
+      }
+    });
+  }
+  // Désactive tous les boutons choix
+  Array.from(choicesEl.children).forEach(b => b.disabled = true);
+  nextBtn.disabled = false;
+}
+
+nextBtn.onclick = () => {
+  currentIndex++;
+  if (currentIndex >= questions.length) {
+    showScore();
+  } else {
+    loadQuestion();
+  }
+}
+
+function showScore() {
+  questionEl.textContent = "🎉 Quiz terminé !";
+  choicesEl.innerHTML = "";
+  resultEl.textContent = `Ton score est ${score} sur ${questions.length}`;
+  nextBtn.disabled = true;
+}
+
+async function fetchQuestions() {
+  const res = await fetch("/api/questions");
+  questions = await res.json();
+  loadQuestion();
+}
+
+fetchQuestions();
+</script>
+
+</body>
+</html>

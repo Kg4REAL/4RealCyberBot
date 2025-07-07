@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Quel outil est utilisé pour scanner les ports ?",
+    "choices": ["Wireshark", "Nmap", "Metasploit", "Burp Suite"],
+    "answer": "Nmap"
+  },
+    {
+    "question": "Quel protocole est sécurisé ?",
+    "choices": ["HTTP", "FTP", "HTTPS", "Telnet"],
+    "answer": "HTTPS"
+  },
+    {
+    "question": "Quel système d'exploitation est le plus utilisé pour le pentest ?",
+    "choices": ["Ubuntu", "Debian", "Fedora", "Kali Linux"],
+    "answer": "Kali Linux"
+  }
+
+]
