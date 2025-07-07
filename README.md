@@ -42,14 +42,10 @@ Crée un fichier .env à la racine :
 
 TELEGRAM_TOKEN=your_telegram_bot_token
 ▶️ Lancer le Bot Telegram
-bash
-Copy
-Edit
+
 python bot.py
 🌐 Lancer l’interface Web (Flask)
-bash
-Copy
-Edit
+
 cd webapp
 python app.py
 Ensuite va sur http://localhost:5000
@@ -81,7 +77,8 @@ telegram_bot/
 │       └── quiz_interactif.html
 ├── README.md               # Ce fichier
 └── requirements.txt        # Liste des dépendances
-💡 Améliorations possibles
+
+##💡 Améliorations possibles
 🎯 Ajouter un système de classement (/top)
 
 🎮 Quiz avec boutons (inline keyboard)
@@ -90,15 +87,15 @@ telegram_bot/
 
 🛡️ Protection admin avancée
 
-👤 Auteur
+##👤 Auteur
 Hālįl Kg
 t.me/Kg4reall
 Passionné de cybersécurité et IA 🤖⚔️
 
-🏁 Licence
+##🏁 Licence
 Code open-source – libre d’utilisation à but éducatif.
 
-⭐ Donne de la force
+##⭐ Donne de la force
 Si tu aimes le projet, pense à mettre une étoile sur GitHub 🌟
 
 
